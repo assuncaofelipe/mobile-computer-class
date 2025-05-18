@@ -1,1 +1,1 @@
-## Estrutura de pastas - MVVM não modularizado
+## Projeto para ministrar disciplina de Computação Móvel  
