@@ -11,18 +11,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import home.felipe.androidretrofit.common.ui.theme.AndroidRetrofitTheme
+import home.felipe.androidretrofit.common.ui.theme.AndroidTheme
+import home.felipe.androidretrofit.features.cepsearch.presentation.CepSearchScreen
+import home.felipe.androidretrofit.features.cepsearch.presentation.CepSearchViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AndroidRetrofitTheme {
+            AndroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                    CepSearchScreen(
+                        modifier = Modifier.padding(innerPadding),
+                        viewModel = CepSearchViewModel()
                     )
                 }
             }
@@ -41,7 +43,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AndroidRetrofitTheme {
+    AndroidTheme {
         Greeting("Android")
     }
 }
