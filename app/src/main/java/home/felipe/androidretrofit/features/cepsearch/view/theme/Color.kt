@@ -1,4 +1,4 @@
-package home.felipe.androidretrofit.common.ui.theme
+package home.felipe.androidretrofit.features.cepsearch.view.theme
 
 import androidx.compose.ui.graphics.Color
 

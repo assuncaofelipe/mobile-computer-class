@@ -1,4 +1,6 @@
-package home.felipe.androidretrofit.features.cepsearch.data.model
+package home.felipe.androidretrofit.features.cepsearch.model
+
+import home.felipe.androidretrofit.features.cepsearch.data.local.CepEntity
 
 data class CepResponse(
     val cep: String?,
@@ -12,3 +14,9 @@ data class CepResponse(
     val ddd: String?,
     val siafi: String?
 )
+
+fun CepResponse.toEntity(): CepEntity {
+    return CepEntity(
+        cep = this.cep ?: "",
+    )
+}

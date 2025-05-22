@@ -1,6 +1,6 @@
 package home.felipe.androidretrofit.features.cepsearch.data.api
 
-import home.felipe.androidretrofit.features.cepsearch.data.model.CepResponse
+import home.felipe.androidretrofit.features.cepsearch.model.CepResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

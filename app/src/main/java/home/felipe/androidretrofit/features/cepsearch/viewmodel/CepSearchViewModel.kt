@@ -1,16 +1,16 @@
-package home.felipe.androidretrofit.features.cepsearch.presentation
+package home.felipe.androidretrofit.features.cepsearch.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import home.felipe.androidretrofit.common.utils.isValidCep
-import home.felipe.androidretrofit.features.cepsearch.data.CepRepository
+import home.felipe.androidretrofit.features.cepsearch.data.repository.CepRepository
+import home.felipe.androidretrofit.features.cepsearch.model.toEntity
+import home.felipe.androidretrofit.features.cepsearch.view.CepState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class CepSearchViewModel : ViewModel() {
-
-    private val repository = CepRepository()
+class CepSearchViewModel(private val cepRepository: CepRepository) : ViewModel() {
 
     private val _state = MutableStateFlow<CepState>(CepState.Idle)
     val state: StateFlow<CepState> = _state
@@ -23,10 +23,15 @@ class CepSearchViewModel : ViewModel() {
 
         viewModelScope.launch {
             _state.value = CepState.Loading
-            val result = repository.buscarCep(cep)
+            val result = cepRepository.buscarCep(cep)
             _state.value = result.fold(
-                onSuccess = { CepState.Success(it) },
-                onFailure = { CepState.Error(it.message ?: "Erro desconhecido") }
+                onSuccess = {
+                    cepRepository.salvarCep(it.toEntity())
+                    CepState.Success(it)
+                },
+                onFailure = {
+                    CepState.Error(it.message ?: "Erro desconhecido")
+                }
             )
         }
     }

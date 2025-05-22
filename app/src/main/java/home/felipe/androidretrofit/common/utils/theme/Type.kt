@@ -1,4 +1,4 @@
-package home.felipe.androidretrofit.common.ui.theme
+package home.felipe.androidretrofit.common.utils.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
