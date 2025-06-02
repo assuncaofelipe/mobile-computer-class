@@ -15,6 +15,16 @@ class CepSearchViewModel(private val cepRepository: CepRepository) : ViewModel()
     private val _state = MutableStateFlow<CepState>(CepState.Idle)
     val state: StateFlow<CepState> = _state
 
+    /**
+     * Busca informações de um CEP informado.
+     *
+     * Valida o formato do CEP, atualiza o estado para Loading, faz a requisição ao repositório
+     * e atualiza o estado conforme o resultado:
+     * - Em caso de sucesso, salva o CEP no histórico e retorna o estado Success com os dados.
+     * - Em caso de erro, retorna o estado Error com a mensagem correspondente.
+     *
+     * @param cep CEP a ser consultado.
+     */
     fun buscarCep(cep: String) {
         if (!cep.isValidCep()) {
             _state.value = CepState.Error("CEP inválido. Deve conter 8 dígitos.")

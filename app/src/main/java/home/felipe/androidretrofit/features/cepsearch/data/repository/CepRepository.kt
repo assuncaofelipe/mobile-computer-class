@@ -10,6 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CepRepository (private val dao: CepDao) {
 
+    /**
+     * Instância do Retrofit configurada para acessar a API de CEPs.
+     * Utiliza o GsonConverterFactory para converter as respostas JSON em objetos Kotlin.
+     */
     private val api: CepApi = Retrofit.Builder()
         .baseUrl("https://viacep.com.br/ws/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -24,6 +28,13 @@ class CepRepository (private val dao: CepDao) {
         return dao.getAllCeps()
     }
 
+
+    /**
+     * Busca informações de um CEP utilizando a API externa.
+     *
+     * @param cep O código do CEP a ser consultado.
+     * @return Um [Result] contendo [CepResponse] se encontrado, ou uma exceção em caso de erro ou CEP inexistente.
+     */
     suspend fun buscarCep(cep: String): Result<CepResponse> = try {
         val response = api.setCep(cep)
         if (response.cep != null) {

@@ -15,6 +15,14 @@ class CepSearchActivity : ComponentActivity() {
         CepRepository(CepDatabase.getDatabase(this).cepDao())
     )
 
+    /**
+     * Função de ciclo de vida chamada quando a Activity é criada.
+     *
+     * Inicializa o tema da aplicação e define o conteúdo da tela usando Compose,
+     * exibindo a tela de busca de CEPs com o ViewModel associado.
+     *
+     * @param savedInstanceState Estado salvo da instância anterior da Activity, se houver.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

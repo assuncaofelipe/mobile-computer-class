@@ -7,6 +7,7 @@ import home.felipe.androidretrofit.features.cepsearch.data.repository.CepHistory
 class CepHistoryViewModelFactory(
     private val repository: CepHistoryRepository
 ) : ViewModelProvider.Factory {
+
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CepHistoryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
