@@ -42,6 +42,7 @@ import home.felipe.androidretrofit.features.cepsearch.data.repository.CepReposit
 import home.felipe.androidretrofit.features.cepsearch.view.CepSearchScreen
 import home.felipe.androidretrofit.features.cepsearch.viewmodel.CepHistoryViewModel
 import home.felipe.androidretrofit.features.cepsearch.viewmodel.CepSearchViewModel
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -211,7 +212,7 @@ fun AppContentPreview() {
                         }
 
                         override fun getAllCeps() =
-                            kotlinx.coroutines.flow.flowOf(emptyList<CepEntity>())
+                           flowOf(emptyList<CepEntity>())
 
                         override suspend fun clearHistory() {
                             TODO()
@@ -254,7 +255,7 @@ fun previewHistoryViewModel() = CepHistoryViewModel(
             }
 
             override fun getAllCeps() =
-                kotlinx.coroutines.flow.flowOf(emptyList<CepEntity>())
+                flowOf(emptyList<CepEntity>())
 
             override suspend fun clearHistory() {
                 TODO()
