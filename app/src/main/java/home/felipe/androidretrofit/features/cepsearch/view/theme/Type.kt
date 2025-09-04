@@ -1,4 +1,4 @@
-package home.felipe.androidretrofit.features.cepsearch.presentation.ui.theme
+package home.felipe.androidretrofit.features.cepsearch.view.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

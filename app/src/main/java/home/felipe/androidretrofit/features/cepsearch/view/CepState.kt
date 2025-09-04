@@ -1,6 +1,6 @@
-package home.felipe.androidretrofit.features.cepsearch.presentation
+package home.felipe.androidretrofit.features.cepsearch.view
 
-import home.felipe.androidretrofit.features.cepsearch.data.model.CepResponse
+import home.felipe.androidretrofit.features.cepsearch.model.CepResponse
 
 sealed class CepState {
     data object Idle : CepState()
